@@ -1,0 +1,11 @@
+spring:
+    datasource:
+        password: root
+        url: jdbc:mysql://localhost:3306/labregister_local?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+        username: root
+    jpa:
+        hibernate:
+            ddl-auto: none
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
