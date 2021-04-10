@@ -1,15 +1,21 @@
 package com.labregister;
 
+import javax.sql.DataSource;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.labregister.model.dao.Category;
 import com.labregister.model.dao.Item;
 
-//@SpringBootTest
+@SpringBootTest
 class ApplicationTests {
+	
+	 @MockBean
+	 private DataSource dataSource;
 
 	@Test
 	void contextLoads() throws JsonProcessingException {
