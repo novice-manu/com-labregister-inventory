@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "96ba890e-9269-441a-b160-15f9699b6007",
+		"name": "Labregister",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \r\n    \"attribute1\": \"round\",\r\n    \"attribute2\": \"glass\",\r\n    \"attribute3\": \"1mm thick\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/category/add"
+			},
+			"response": []
+		},
+		{
+			"name": "Item ADD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": {\r\n        \"id\": 1,\r\n        \"name\": \"petri-dish-type-3\"\r\n    },\r\n    \"name\": \"small-petri-dish\",\r\n    \"brand\": \"XYZ\",\r\n    \"initialQuantity\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/item/add"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Item",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":2,\r\n    \"name\": \"small-petri-dish\",\r\n    \"brand\": \"XYZ-Update\",\r\n    \"initialQuantity\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/item/update"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Items by Category API",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":2,\r\n    \"name\": \"small-petri-dish\",\r\n    \"brand\": \"XYZ-Update\",\r\n    \"initialQuantity\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/item/get?categoryId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"item",
+						"get"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
