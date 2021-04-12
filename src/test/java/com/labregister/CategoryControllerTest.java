@@ -1,6 +1,5 @@
 package com.labregister;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.labregister.model.dto.CategoryDTO;
-import com.labregister.model.dto.ItemDTO;
 
 public class CategoryControllerTest extends TestConfig{
 	@Autowired
