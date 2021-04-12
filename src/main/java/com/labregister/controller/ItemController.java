@@ -39,7 +39,7 @@ public class ItemController {
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<Void> update(@Valid @RequestBody ItemDTO item) throws JsonMappingException, JsonProcessingException {
+	public ResponseEntity<Void> update(@Valid @RequestBody ItemDTO item)  {
 
 		log.info("ItemDTO Updated");
 		return itemService.updateItem(item);

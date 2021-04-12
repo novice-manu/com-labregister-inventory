@@ -7,7 +7,7 @@ CREATE TABLE `category` (
    `attribute_2` varchar(255) , 
    `attribute_3` varchar(255) ,
    `last_update` DATE NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 CREATE TABLE `item` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
    `name` varchar(255) NOT NULL,
@@ -17,4 +17,4 @@ CREATE TABLE `item` (
      `category_id` INT(11) NOT NULL,
    `last_update` DATE NOT NULL,
    FOREIGN KEY (category_id) REFERENCES category(id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);

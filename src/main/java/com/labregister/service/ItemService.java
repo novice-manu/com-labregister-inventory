@@ -43,16 +43,16 @@ public class ItemService {
 		Item itemDao = Item.builder().build();
 		Optional<Category> categoryDao = null;
 
-		if (requestValidator.validate(item))
+		if (requestValidator.validate(item)) {
 			categoryDao = categoryRepository.findById(item.getCategory().getId());
-
+		}
 		itemDao.setCategory(categoryDao.get());
 		BeanUtils.copyProperties(item, itemDao);
 		Item savedItem = itemRepository.save(itemDao);
 
 		ItemCreatedResponse itemCreatedResponse = responseValidator.validateAndCreateItemCreateResponse(savedItem);
 
-		return new ResponseEntity<ItemCreatedResponse>(itemCreatedResponse, HttpStatus.OK);
+		return new ResponseEntity<ItemCreatedResponse>(itemCreatedResponse, HttpStatus.CREATED);
 	}
 
 	public ResponseEntity<Void> updateItem(ItemDTO item) {
@@ -61,7 +61,7 @@ public class ItemService {
 		Optional<Category> categoryOptional = categoryRepository.findById(item.getCategory().getId());
 		Item daoItem = null;
 
-		if (itemOptional.isPresent() && categoryOptional.isPresent()) {
+		if (requestValidator.validateItem(itemOptional) && requestValidator.validateCategory(categoryOptional)) {
 			daoItem = itemOptional.get();
 			daoItem.setCategory(categoryOptional.get());
 			BeanUtils.copyProperties(item, daoItem);
