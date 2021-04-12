@@ -1,5 +1,5 @@
-###Labregister Inventory Management HLD-1
-![](com-labregister-inventory/app-doc/HLD-1.png)
+#### Labregister Inventory Management HLD-1
+[High Level Design](https://github.com/novice-manu/com-labregister-inventory/blob/master/app-doc/HLD-1.PNG)
 #### Pre-requisite:
 -	JAVA 8
 -	Maven
