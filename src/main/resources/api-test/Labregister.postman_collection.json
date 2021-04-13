@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \r\n    \"attribute1\": \"round\",\r\n    \"attribute2\": \"glass\",\r\n    \"attribute3\": \"1mm thick\"\r\n}",
+					"raw": "{\r\n    \"name\":\"Blood Sample\",\r\n    \"attribute1\": \"Blood type\",\r\n    \"attribute2\": \"HB Level\",\r\n    \"attribute3\": \"WB level\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -30,7 +30,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"category\": {\r\n        \"id\": 1,\r\n        \"name\": \"petri-dish-type-3\"\r\n    },\r\n    \"name\": \"small-petri-dish\",\r\n    \"brand\": \"XYZ\",\r\n    \"initialQuantity\": 10\r\n}",
+					"raw": "{\r\n    \"category\": {\r\n        \"id\": 1,\r\n        \"name\": \"petri-dish-type-3\"\r\n    },\r\n    \"name\": \"petri-dish-size-3\",\r\n    \"brand\": \"XYZ\",\r\n    \"initialQuantity\": 10\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -48,7 +48,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\":2,\r\n    \"name\": \"small-petri-dish\",\r\n    \"brand\": \"XYZ-Update\",\r\n    \"initialQuantity\": 10\r\n}",
+					"raw": "{\r\n    \"category\": {\r\n        \"id\": 1,\r\n        \"name\": \"petri-dish-type-3\"\r\n    },\r\n      \"id\":\"2\",\r\n    \"name\": \"small-petri-dish\",\r\n    \"brand\": \"XYZ\",\r\n    \"initialQuantity\": 10\r\n  \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
