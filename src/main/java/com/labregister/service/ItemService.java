@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.labregister.exception.CategoryNotFoundException;
+import com.labregister.exception.ItemNotFoundException;
 import com.labregister.model.dao.Category;
 import com.labregister.model.dao.Item;
 import com.labregister.model.dto.CategoryDTO;
@@ -57,17 +59,26 @@ public class ItemService {
 
 	public ResponseEntity<Void> updateItem(ItemDTO item) {
 
-		Optional<Item> itemOptional = itemRepository.findById(item.getId());
-		Optional<Category> categoryOptional = categoryRepository.findById(item.getCategory().getId());
-		Item daoItem = null;
+		if (requestValidator.validateItem(Optional.ofNullable(item.getId()))
+				&& requestValidator.validateCategory(Optional.ofNullable(item.getCategory().getId()))) {
+			
+			Optional<Item> itemOptional = itemRepository.findById(item.getId());
+			Optional<Category> categoryOptional = categoryRepository.findById(item.getCategory().getId());
+			Item daoItem = null;
 
-		if (requestValidator.validateItem(itemOptional) && requestValidator.validateCategory(categoryOptional)) {
-			daoItem = itemOptional.get();
-			daoItem.setCategory(categoryOptional.get());
-			BeanUtils.copyProperties(item, daoItem);
-			if (Optional.ofNullable(itemRepository.save(daoItem)).isPresent()) {
+			if (itemOptional.isPresent() && categoryOptional.isPresent()) {
+				daoItem = itemOptional.get();
+				daoItem.setCategory(categoryOptional.get());
+				BeanUtils.copyProperties(item, daoItem);
+				if (Optional.ofNullable(itemRepository.save(daoItem)).isPresent()) {
 
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				}
+			}else if (!itemOptional.isPresent()) {
+				throw new ItemNotFoundException("Not Found",404,"Incorrect Item ID","Item Not Found",null);
+				
+			}else if (!categoryOptional.isPresent()) {
+				throw new CategoryNotFoundException("Not Found",404,"Incorrect Category ID","Category Not Found",null);
 			}
 		}
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

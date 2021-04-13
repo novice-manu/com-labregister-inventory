@@ -1,9 +1,11 @@
 package com.labregister.exception;
 
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -49,11 +51,25 @@ public class LabRegisterGlobalExceptionHandler {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
 
-		log.info("SQL Exception {}", ex.getLocalizedMessage());
+		log.info("MethodArgumentNotValidException Exception {}", ex.getAllErrors());
+		ErrorResponse error = null;
+		if (Optional.ofNullable(ex.getFieldError("name")).isPresent()) {
+			FieldError errorDetails = ex.getFieldError("name");
+			error = ErrorResponse.builder().code(1001).details(ex.getFieldError("name").getDefaultMessage())
+					.message("Invalid name field").build();
+		}
 
-		ErrorResponse error = ErrorResponse.builder().code(1002).details(ex.getLocalizedMessage())
-				.message(ex.getFieldError("name").getDefaultMessage()).build();
-
+		if (Optional.ofNullable(ex.getFieldError("brand")).isPresent()) {
+			FieldError errorDetails = ex.getFieldError("brand");
+			error = ErrorResponse.builder().code(1002).details(ex.getFieldError("brand").getDefaultMessage())
+					.message("Invalid name field").build();
+		}
+		if (Optional.ofNullable(ex.getFieldError("initialQuantity")).isPresent()) {
+			FieldError errorDetails = ex.getFieldError("initialQuantity");
+			error = ErrorResponse.builder().code(1003).details(ex.getFieldError("initialQuantity").getDefaultMessage())
+					.message("Invalid name field").build();
+		}
+		
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 
 	}

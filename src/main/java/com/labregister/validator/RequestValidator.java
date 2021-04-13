@@ -29,16 +29,16 @@ public class RequestValidator {
 
 	}
 
-	public boolean validateItem(Optional<Item> itemOptional) {
-		if (!itemOptional.isPresent()){
+	public boolean validateItem(Optional<Long> optional) {
+		if (!optional.isPresent()){
 			throw new ItemNotFoundException("Not Found",404,"Incorrect Item ID","Item Not Found",null);
 
 		}
 		return true;
 	}
 	
-	public boolean validateCategory(Optional<Category> categoryOptional) {
-		if (!categoryOptional.isPresent()){
+	public boolean validateCategory(Optional<Long> optional) {
+		if (!optional.isPresent()){
 			throw new CategoryNotFoundException("Not Found",404,"Incorrect Category ID","Category Not Found",null);
 
 		}

@@ -1,5 +1,6 @@
 package com.labregister.model.dto;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -31,6 +32,7 @@ private Long id;
 private CategoryDTO category;
 @JsonProperty("lastUpdate")
 private String lastUpdate;
+@NotBlank(message="Name field is mandatory")
 @JsonProperty("name")
 private String name;
 @JsonProperty("brand")

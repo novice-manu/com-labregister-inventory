@@ -1,7 +1,7 @@
 spring:
     datasource:
         password: root
-        url: jdbc:mysql://localhost:3306/labregister_local?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+        url: jdbc:mysql://localhost:3306/labregister_local?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
         username: root
     jpa:
         hibernate:
